@@ -1,96 +1,158 @@
 ---
 marp: true
-theme: uncover
+theme: vishal
 paginate: true
-header: 'Product Documentation: API v2.0'
-footer: '© 2025 Software Inc. | Contact: 23f2005593@ds.study.iitm.ac.in'
-
-# Custom theme styles are defined here.
-style: |
-  .slide {
-    font-family: 'Arial', sans-serif;
-  }
-  h1 {
-    color: #005A9C;
-    text-align: center;
-  }
-  h2 {
-    color: #0078D4;
-    border-bottom: 2px solid #0078D4;
-  }
-  .quote {
-    color: #555;
-    font-style: italic;
-    text-align: center;
-    border-left: 5px solid #ccc;
-    padding-left: 20px;
-  }
+html: true
+size: 16:9
+header: 'Product Docs — v1.0'
+footer: '© 2025 Your Company'
+# Enable KaTeX by running marp-cli with --katex when exporting
 ---
 
 <!-- _class: lead -->
-<!-- _backgroundColor: #f0f4f8 -->
+# Product Documentation Presentation
+**Modern, version-controlled, multi-format**
 
-# **API v2.0 Product Documentation**
-## A Guide for Developers
-Technical Writer Team
+**Contact:** <23f2005593@ds.study.iitm.ac.in>
+
+> Built with Marp Markdown so you can maintain docs in Git and export to HTML/PDF/PPTX with one command.
 
 ---
 
-## Agenda
+## Why Marp for Product Docs?
 
-1.  **Introduction**: What's new in API v2.0?
-2.  **Key Features**: A detailed look at new endpoints.
-3.  **Performance**: Algorithmic improvements.
-4.  **Migration**: Steps to upgrade from v1.0.
-5.  **Q&A**
+- **Markdown-first** authoring → easy reviews, diffs, & PRs
+- **One source → many outputs** (HTML, PDF, PPTX)
+- **Custom themes** via CSS for consistent branding
+- **Portable math/code** blocks for engineers & PMs
+- **Automatable** in CI to ship docs alongside releases
 
 ---
 
 <!--
-# This slide now uses a local image from the 'images' folder.
-backgroundImage: "url('photo.jpg')"
+backgroundImage: url('./bg.svg')
 backgroundSize: cover
-_color: white
-_textShadow: 1px 1px 5px black
+color: #eaf2ff
 -->
+# Architecture Overview
 
-## Key Features Overview
+- Core Services: Auth, API Gateway, Data Pipeline
+- Storage: OLTP (Postgres) + OLAP (Columnar)
+- Messaging: Kafka for async workflows
+- Observability: Traces, Metrics, Logs
 
-- **New Endpoint**: `/users/profile` for aggregated user data.
-- **Enhanced Security**: OAuth 2.0 is now mandatory.
-- **Batch Operations**: Support for bulk record creation.
-
----
-
-## Performance Improvements
-
-We have optimized our core sorting algorithm. The new implementation reduces the time complexity for average cases.
-
-The previous version had a complexity of:
-$$ O(n^2) $$
-
-The new version improves this to:
-$$ O(n \log n) $$
-
-This results in a significant performance gain on large datasets.
+_This slide uses a **background image** via Marp directives._
 
 ---
 
-<!-- _backgroundColor: #e8f5e9 -->
+## Complexity Cheat Sheet (with Math)
 
-## Migration from v1.0
+Consider mergesort complexity:
 
-<div class="quote">
-  "The migration process is designed to be as seamless as possible."
-</div>
+$$
+T(n) = 2T\left(\frac{n}{2}\right) + O(n)
+$$
 
-**Key Steps:**
-1.  Update base URL to `https://api.example.com/v2/`.
-2.  Replace API key authentication with an OAuth 2.0 token.
-3.  Test deprecated endpoints and update to their v2.0 equivalents.
+Master Theorem gives:
+
+$$
+T(n) = O(n \log n)
+$$
+
+Also remember amortized queue via two stacks:
+
+$$
+\text{amortized push/pop} = O(1)
+$$
+
+> Export with `--katex` to render equations.
 
 ---
 
-## Thank You
+## Config Snippet (YAML)
 
-**Questions?**
+```yaml
+# config/app.yml
+service:
+  name: product-svc
+  replicas: 3
+  rolloutStrategy: blue-green
+observability:
+  tracing: true
+  metrics:
+    exporter: otlp
+    endpoint: https://telemetry.example.com
+```
+
+Notes:
+
+- Values can be templatized per environment.
+- Keep secrets out of the repo (use a vault).
+
+---
+
+## Code Sample (TypeScript SDK)
+
+```ts
+// src/sdk/client.ts
+export async function createSession(token: string) {
+  const res = await fetch("/v1/session", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+```
+
+- Ship code examples inline with docs.
+- Keep examples tested via doctest/CI where possible.
+
+---
+
+## Theming & Styling Controls
+
+Use Marp **directives** per slide:
+
+- `<!-- _class: lead -->` for the title slide
+- `<!-- color: #eaf2ff -->` to override text color
+- `<!-- backgroundImage: url('./bg.svg') -->` for imagery
+- Global pagination via `paginate: true` in front matter
+
+Custom theme: **theme-vishal.css** (see repo).
+
+---
+
+## Export Commands
+
+HTML:
+
+```bash
+npx @marp-team/marp-cli slides.md --theme theme-vishal.css --html --katex -o slides.html
+```
+
+PDF:
+
+```bash
+npx @marp-team/marp-cli slides.md --theme theme-vishal.css --pdf --katex -o slides.pdf
+```
+
+PPTX:
+
+```bash
+npx @marp-team/marp-cli slides.md --theme theme-vishal.css --pptx --katex -o slides.pptx
+```
+
+Automate in CI to publish with every tag.
+
+---
+
+## Questions & Contact
+
+Reach me at **23f2005593@ds.study.iitm.ac.in**
+
+- Repo contains: `slides.md`, `theme-vishal.css`, `bg.svg`
+- Add more slides as your product evolves.
+- Version-control everything, including exported assets via releases.
+
+Thanks!
