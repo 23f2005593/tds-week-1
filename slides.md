@@ -5,7 +5,7 @@ paginate: true
 header: 'Product Documentation: API v2.0'
 footer: '© 2025 Software Inc. | Contact: 23f2005593@ds.study.iitm.ac.in'
 
-# A custom theme is defined below using CSS.
+# Custom theme styles are defined here.
 style: |
   .slide {
     font-family: 'Arial', sans-serif;
@@ -46,7 +46,13 @@ Technical Writer Team
 
 ---
 
-![A description of my photo](photo.jpg)
+<!--
+# This slide now uses a local image from the 'images' folder.
+backgroundImage: "url('photo.jpg')"
+backgroundSize: cover
+_color: white
+_textShadow: 1px 1px 5px black
+-->
 
 ## Key Features Overview
 
