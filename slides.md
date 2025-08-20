@@ -46,12 +46,7 @@ Technical Writer Team
 
 ---
 
-<!--
-backgroundImage: "url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max')"
-backgroundSize: cover
-_color: white
-_textShadow: 1px 1px 5px black
--->
+![A description of my photo](photo.jpg)
 
 ## Key Features Overview
 
