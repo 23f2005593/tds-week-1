@@ -1,158 +1,199 @@
 ---
 marp: true
-theme: vishal
+theme: default
 paginate: true
-html: true
-size: 16:9
-header: 'Product Docs — v1.0'
-footer: '© 2025 Your Company'
-# Enable KaTeX by running marp-cli with --katex when exporting
+backgroundImage: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')
+style: |
+  section {
+    background-color: rgba(255, 255, 255, 0.9);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  h1 {
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+  }
+  h2 {
+    color: #34495e;
+  }
+  h3 {
+    color: #7f8c8d;
+  }
+  strong {
+    color: #e74c3c;
+  }
+  table {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+  blockquote {
+    background: #ecf0f1;
+    border-left: 4px solid #3498db;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
 ---
 
+<!-- _backgroundImage: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80') -->
+<!-- _color: white -->
 <!-- _class: lead -->
-# Product Documentation Presentation
-**Modern, version-controlled, multi-format**
 
-**Contact:** <23f2005593@ds.study.iitm.ac.in>
+# Q2 2025 Business Analysis
+## Data-Driven Insights
 
-> Built with Marp Markdown so you can maintain docs in Git and export to HTML/PDF/PPTX with one command.
-
----
-
-## Why Marp for Product Docs?
-
-- **Markdown-first** authoring → easy reviews, diffs, & PRs
-- **One source → many outputs** (HTML, PDF, PPTX)
-- **Custom themes** via CSS for consistent branding
-- **Portable math/code** blocks for engineers & PMs
-- **Automatable** in CI to ship docs alongside releases
+### Technical Documentation & Analysis
+**Presenter:** 23f2005593@ds.study.iitm.ac.in
 
 ---
 
-<!--
-backgroundImage: url('./bg.svg')
-backgroundSize: cover
-color: #eaf2ff
--->
-# Architecture Overview
+<!-- _backgroundImage: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80') -->
+<!-- _class: invert -->
 
-- Core Services: Auth, API Gateway, Data Pipeline
-- Storage: OLTP (Postgres) + OLAP (Columnar)
-- Messaging: Kafka for async workflows
-- Observability: Traces, Metrics, Logs
+# Executive Summary
 
-_This slide uses a **background image** via Marp directives._
+> **Performance Overview:** Q2 2025 delivered exceptional results across all key metrics
+
+- **Revenue Growth**: 15% increase compared to Q1 2025
+- **Market Expansion**: Entered 3 new regions
+- **Customer Base**: 25% growth in active users
+- **Profitability**: Improved margins by 8%
 
 ---
 
-## Complexity Cheat Sheet (with Math)
+# Key Metrics Overview
 
-Consider mergesort complexity:
-
-$$
-T(n) = 2T\left(\frac{n}{2}\right) + O(n)
-$$
-
-Master Theorem gives:
-
-$$
-T(n) = O(n \log n)
-$$
-
-Also remember amortized queue via two stacks:
-
-$$
-\text{amortized push/pop} = O(1)
-$$
-
-> Export with `--katex` to render equations.
+| Metric | Q1 2025 | Q2 2025 | Change |
+|--------|---------|---------|--------|
+| Revenue | $2.1M | $2.4M | +15% |
+| Users | 12,000 | 15,000 | +25% |
+| Retention | 85% | 89% | +4% |
+| Cost/User | $45 | $38 | -15% |
 
 ---
 
-## Config Snippet (YAML)
+# Algorithm Performance Analysis
 
-```yaml
-# config/app.yml
-service:
-  name: product-svc
-  replicas: 3
-  rolloutStrategy: blue-green
-observability:
-  tracing: true
-  metrics:
-    exporter: otlp
-    endpoint: https://telemetry.example.com
-```
+## Data Processing Complexity
 
-Notes:
+Our analytics engine optimization results:
 
-- Values can be templatized per environment.
-- Keep secrets out of the repo (use a vault).
+**Time Complexity Improvements:**
+- Previous algorithm: $O(n^2 \log n)$
+- New optimized version: $O(n \log n)$
 
----
+**Space Complexity:**
+- Memory usage: $O(n)$ where $n$ is dataset size
 
-## Code Sample (TypeScript SDK)
+**Performance Metrics:**
+$$\text{Efficiency Gain} = \frac{T_{old} - T_{new}}{T_{old}} \times 100\%$$
 
-```ts
-// src/sdk/client.ts
-export async function createSession(token: string) {
-  const res = await fetch("/v1/session", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.json();
-}
-```
+Where $T_{old} = 2.3s$ and $T_{new} = 0.8s$
 
-- Ship code examples inline with docs.
-- Keep examples tested via doctest/CI where possible.
+$$\text{Efficiency Gain} = \frac{2.3 - 0.8}{2.3} \times 100\% = 65.2\%$$
 
 ---
 
-## Theming & Styling Controls
+# Market Performance
 
-Use Marp **directives** per slide:
+![bg right:40% 80%](https://via.placeholder.com/400x300/4CAF50/FFFFFF?text=Revenue+Growth+Chart)
 
-- `<!-- _class: lead -->` for the title slide
-- `<!-- color: #eaf2ff -->` to override text color
-- `<!-- backgroundImage: url('./bg.svg') -->` for imagery
-- Global pagination via `paginate: true` in front matter
-
-Custom theme: **theme-vishal.css** (see repo).
+- **Strong Q2 Performance**
+- Exceeded targets by 12%
+- Regional expansion successful
+- Cost optimization effective
 
 ---
 
-## Export Commands
+# Customer Insights
 
-HTML:
-
-```bash
-npx @marp-team/marp-cli slides.md --theme theme-vishal.css --html --katex -o slides.html
-```
-
-PDF:
-
-```bash
-npx @marp-team/marp-cli slides.md --theme theme-vishal.css --pdf --katex -o slides.pdf
-```
-
-PPTX:
-
-```bash
-npx @marp-team/marp-cli slides.md --theme theme-vishal.css --pptx --katex -o slides.pptx
-```
-
-Automate in CI to publish with every tag.
+- **Demographics**: 60% millennials, 25% Gen Z
+- **Geographic**: 40% urban, 35% suburban, 25% rural  
+- **Engagement**: Average session time increased 18%
+- **Satisfaction**: NPS score improved to 72
 
 ---
 
-## Questions & Contact
+# Competitive Analysis
 
-Reach me at **23f2005593@ds.study.iitm.ac.in**
+![bg left:30% 90%](https://via.placeholder.com/300x200/2196F3/FFFFFF?text=Market+Share)
 
-- Repo contains: `slides.md`, `theme-vishal.css`, `bg.svg`
-- Add more slides as your product evolves.
-- Version-control everything, including exported assets via releases.
+### Our Position:
+- Market share: 18% (up from 15%)
+- 2nd largest in our segment
+- Key differentiator: Customer service
+- Competitive pricing advantage
 
-Thanks!
+---
+
+# Financial Highlights
+
+- **Gross Margin**: 68% (target: 65%)
+- **Operating Expenses**: Reduced by 5%
+- **Cash Flow**: Positive $890K
+- **R&D Investment**: 12% of revenue
+
+---
+
+# Operational Efficiency
+
+![bg right:35% 85%](https://via.placeholder.com/350x250/FF9800/FFFFFF?text=Efficiency+Metrics)
+
+### Key Improvements:
+- Process automation: 30% faster
+- Error reduction: 25% decrease  
+- Team productivity: Up 20%
+- Customer response time: 40% faster
+
+---
+
+# Challenges & Risks
+
+- **Supply Chain**: Minor delays in Q3
+- **Competition**: New market entrants
+- **Regulations**: Upcoming compliance changes
+- **Talent**: Skills gap in tech roles
+
+---
+
+# Q3 2025 Outlook
+
+### Priorities:
+- Launch new product line
+- Expand international presence  
+- Strengthen supply chain partnerships
+- Invest in team development
+
+### Targets:
+- Revenue: $2.8M (+17%)
+- Users: 18,000 (+20%)
+
+---
+
+<!-- _backgroundImage: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') -->
+<!-- _class: lead -->
+
+# Thank You
+## Questions & Discussion
+
+**Contact Information:**
+- **Email:** 23f2005593@ds.study.iitm.ac.in
+- **Analytics Dashboard:** company.com/analytics
+- **Next Review:** October 15, 2025
+
+---
+
+<!-- _paginate: false -->
+<!-- _class: invert -->
+
+## Document Information
+
+**Version Control:**
+- Repository: quarterly-earnings-presentation
+- Branch: main
+- Last Updated: August 17, 2025
+
+**Formats Available:**
+- Markdown (source)
+- HTML (web presentation)
+- PDF (printable)
+- PowerPoint (export)
